@@ -1,0 +1,30 @@
+<div class="yield">
+  <%= form_for :session, url: session_path do |form| %>
+    <div class="text-field" style="font-weight: bold;font-size:16px;margin-top:55px;">
+      <%= form.label :email,'邮箱' %>
+      <%= form.text_field :email, type: 'email', :class => "form-control" %>
+    </div>
+
+    <div class="password-field" style="font-weight: bold;font-size:16px;margin-top:5px;">
+      <%= form.label :password,'密码' %>
+      <%= form.password_field :password, :class => "form-control" %>
+    </div>
+
+    <div class="submit-field" style="margin-top: 10px;">
+      <%= form.submit '登陆', :class => 'btn btn-primary'%>
+    </div>
+
+    <div class="other-links" style="margin-top: 10px;">
+      <% if Clearance.configuration.allow_sign_up? %>
+        <%= link_to t(".注册"), sign_up_path %>
+      <% end %>
+      <%= link_to t(".忘记密码") %>
+    </div>
+  <% end %>
+</div>
+
+<style type="text/css">
+  .yield{
+    width: 250px;
+  }
+</style>

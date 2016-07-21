@@ -1,0 +1,21 @@
+<div id="clearance" class="sign-up">
+  <div class="yield">
+    <%= form_for @user do |form| %>
+      <%= render partial: '/users/form', object: form %>
+
+      <div class="submit-field" style="margin-top: 10px;">
+        <%= form.submit '注册', :class => 'btn btn-primary' %>
+      </div>
+
+      <div class="other-links" style="margin-top: 10px;">
+        <%= link_to t(".登陆"), sign_in_path %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<style type="text/css">
+  .yield{
+    width: 250px;
+  }
+</style>
