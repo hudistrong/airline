@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
         redirect_to cities_path
       else
         flash[:danger] = '用户名或密码错误'
-        render template: "sessions/new", status: :unauthorized
+        render "sessions/new", status: :unauthorized
       end
     end
   end

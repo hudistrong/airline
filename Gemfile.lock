@@ -47,6 +47,7 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.2)
     byebug (9.0.5)
+    cancancan (1.13.1)
     clearance (1.14.1)
       bcrypt
       email_validator (~> 1.4)
@@ -169,6 +170,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass
   byebug
+  cancancan (~> 1.10)
   clearance
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
