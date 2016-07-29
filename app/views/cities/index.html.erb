@@ -1,3 +1,20 @@
-
+<table class="table table-bordered table-hover" style="margin-top: 5%;">
+  	<tr style="background-color:#f6f6f6;">
+  	  <td>#</td>
+  	  <td>城市名称</td>
+  	  <td>创建时间</td>
+  	  <td>是否开通</td>
+  	  <td>成熟度</td>
+  	</tr>
+  	<% @cities.each do |c| %>
+  	<tr>
+  		<td><%=c.id%></td>
+  		<td><%=c.name%></td>
+  		<td><%=c.created_at.strftime("%Y-%m-%d %H:%M")%></td>
+  		<td><a href="/cities/update_is_open?city_id=<%=c.id%>"><%=c.is_open_zh%></a></td>
+  		<td><%=c.maturity_zh%></td>
+  	</tr>
+  	<%end%>
+</table>
 
 

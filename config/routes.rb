@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resource :session, controller: "sessions", only: [:create]
-  resources :cities
+  resources :cities, controller: "cities", only: [:index]
   resources :users, controller: "users", only: [:create] 
 
   get "/sign_in" => "sessions#new", as: "sign_in"
@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   root 'sessions#new'
   get "/edit_password" => "users#edit_password", as: "edit_password"
   post "/update_password" => "users#update_password", as: "update_password"
-  
+  get "/cities/update_is_open" => "cities#update_is_open", as: "update_is_open"
 end
