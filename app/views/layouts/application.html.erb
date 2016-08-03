@@ -2,21 +2,19 @@
 <html>
   <head>
     <title>HudiAirlines</title>
-    <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true%>
     <%= csrf_meta_tags %>
   </head>
 
   <body>
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">    
-        <div class="logo" style="float:left;position:relative;top:15px;font-family:'Times New Roman';font-size: 18px;"><i style="margin-left:-50px;margin-right:10px;color:lightblue;" class="glyphicon glyphicon-plane"></i><a>HUDI AIRLINES</a></div>
+        <div class="logo" style="float:left;position:relative;top:15px;font-family:'Times New Roman';font-size: 18px;"><i style="margin-left:-50px;margin-right:10px;color:lightblue;" class="glyphicon glyphicon-plane"></i><a href="/cities">HUDI AIRLINES</a></div>
         <nav>
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "首页", cities_path %></li>
-            <li><%= link_to "帮助", '#' %></li>
+            <li><%= link_to "帮助", helps_path %></li>
             <li role="presentation" class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
               <% if signed_in? %>
@@ -30,7 +28,7 @@
               </a>
               <ul class="dropdown-menu">
                 <% if signed_in? %>
-		              <li><%= link_to "修改密码", edit_password_path(current_user.try(:id)) %></li>
+		              <li><%= link_to "修改密码", edit_password_users_path %></li>
 		              <li><%= link_to "退出", sign_out_path %></li>
 	              <% else %>
 	              	<li><%= link_to "登陆", sign_in_path %></li>

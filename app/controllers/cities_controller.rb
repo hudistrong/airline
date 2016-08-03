@@ -5,7 +5,6 @@ class CitiesController < ApplicationController
   end
 
   def update_is_open
-  	puts 12345
     city = City.find(params[:city_id])
     city.update_attributes(:is_open => !city.is_open)
     @cities = City.all
