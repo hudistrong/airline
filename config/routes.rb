@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   get "/sign_in" => "sessions#new", as: "sign_in"
   get "/sign_out" => "sessions#destroy", as: "sign_out"
+  mount AirlineApi => '/api'
 
   # resources :users, controller: "users", only: [:create]
   # get "/edit_password" => "users#edit_password", as: "edit_password"

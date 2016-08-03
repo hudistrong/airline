@@ -8,6 +8,16 @@ Bundler.require(*Rails.groups)
 
 module HudiAirlines
   class Application < Rails::Application
+  	config.autoload_paths += %W(
+        #{config.root}/lib
+    )
+    config.paths.add File.join('app', 'api'), glob: File.join('**', '*.rb')
+    config.autoload_paths += Dir[Rails.root.join('app', 'api', '*')]
+
+  	config.active_record.default_timezone = :local
+  	config.time_zone = 'Beijing'
+    # config.i18n.default_locale = "zh-CN"
+    config.encoding = "utf-8"
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
