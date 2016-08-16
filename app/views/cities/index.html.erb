@@ -1,20 +1,58 @@
-<table class="table table-bordered table-hover" style="margin-top: 5%;">
-  	<tr style="background-color:#f6f6f6;">
+<script type="text/javascript">
+    $(function(){
+      var bt = document.getElementById("bt");
+    }) 
+    var getCities = function(){
+      bt.style.display = "none";
+      var url = "/cities/get_cities"
+      $.ajax({
+        url: url,
+        method:'GET',
+        dataType: 'json',
+        success:function(data){
+          if(data.success){
+            var cities = data.data;
+            var p = document.getElementById("fuck");
+            for (var i = 0; i < cities.length; i++) {
+              var new_tr = document.createElement("tr");
+              var id_td = document.createElement("td");             
+              var name_td = document.createElement("td");
+              var create_td = document.createElement("td");
+              var a_td = document.createElement("td");
+              var maturity_td = document.createElement("td");
+              id_td.innerText = cities[i].id;
+              name_td.innerText = cities[i].name;
+              create_td.innerText = cities[i].time;
+              a_td.innerHTML = ('<a href="/cities/update_is_open?city_id='+cities[i].id+'">'+cities[i].is_open_zh+'</a>');
+              maturity_td.innerText = cities[i].maturity_zh;
+              new_tr.appendChild(id_td);
+              new_tr.appendChild(name_td);
+              new_tr.appendChild(create_td);
+              new_tr.appendChild(a_td);
+              new_tr.appendChild(maturity_td);
+              p.appendChild(new_tr);
+            }
+          }
+        },
+        error:function(error){
+        }
+      });
+    }
+</script>
+
+<table id="fuck" class="table table-bordered table-hover" style="margin-top: 5%;text-align:center;">
+  	<button id="bt" onclick="getCities()">查看城市</button>
+    <tr style="background-color:#f6f6f6;">
   	  <td>#</td>
   	  <td>城市名称</td>
   	  <td>创建时间</td>
   	  <td>是否开通</td>
   	  <td>成熟度</td>
   	</tr>
-  	<% @cities.each do |c| %>
-  	<tr>
-  		<td><%=c.id%></td>
-  		<td><%=c.name%></td>
-  		<td><%=c.created_at.strftime("%Y-%m-%d %H:%M")%></td>
-  		<td><a href="/cities/update_is_open?city_id=<%=c.id%>"><%=c.is_open_zh%></a></td>
-  		<td><%=c.maturity_zh%></td>
-  	</tr>
-  	<%end%>
 </table>
+
+
+
+
 
 

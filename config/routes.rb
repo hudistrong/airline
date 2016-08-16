@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     collection do
       get "index"
       get "update_is_open"
+      get "get_cities"
     end
   end
 end

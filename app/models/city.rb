@@ -3,18 +3,18 @@ class City < ApplicationRecord
 
 	def maturity_zh
 		en_to_zh = {
-			newarea: "新区",
-			half: "半成熟区",
-			mature: "成熟区"
+			"newarea" => "新区",
+			"half" => "半成熟区",
+			"mature" => "成熟区"
 	    }
-	    en_to_zh[self.maturity.to_sym]
+	    en_to_zh[self.try(:maturity)]
 	end
 
 	def is_open_zh
 		en_to_zh = {
-			false: '否',
-			true: '是'
+			"false" => '否',
+			"true" => '是'
 		}
-		en_to_zh[self.is_open.to_s.to_sym]
+		en_to_zh[self.try(:is_open).to_s]
 	end
 end

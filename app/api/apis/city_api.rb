@@ -8,6 +8,7 @@ class CityAPI < Grape::API
       @cities = City.all
 
       present :data, @cities
+      present :success, true
     end
     
   end
