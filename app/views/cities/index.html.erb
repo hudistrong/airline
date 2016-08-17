@@ -14,22 +14,22 @@
             var cities = data.data;
             var p = document.getElementById("fuck");
             for (var i = 0; i < cities.length; i++) {
-              var new_tr = document.createElement("tr");
-              var id_td = document.createElement("td");             
-              var name_td = document.createElement("td");
-              var create_td = document.createElement("td");
-              var a_td = document.createElement("td");
-              var maturity_td = document.createElement("td");
+              var new_tr = $("tr");
+              var id_td = $("td");        
+              var name_td = $("td");
+              var create_td = $("td");
+              var a_td = $("td");
+              var maturity_td = $("td");
               id_td.innerText = cities[i].id;
               name_td.innerText = cities[i].name;
               create_td.innerText = cities[i].time;
               a_td.innerHTML = ('<a href="/cities/update_is_open?city_id='+cities[i].id+'">'+cities[i].is_open_zh+'</a>');
               maturity_td.innerText = cities[i].maturity_zh;
-              new_tr.appendChild(id_td);
-              new_tr.appendChild(name_td);
-              new_tr.appendChild(create_td);
-              new_tr.appendChild(a_td);
-              new_tr.appendChild(maturity_td);
+              new_tr.append(id_td);
+              new_tr.append(name_td);
+              new_tr.append(create_td);
+              new_tr.append(a_td);
+              new_tr.append(maturity_td);
               p.appendChild(new_tr);
             }
           }
