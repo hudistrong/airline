@@ -28,8 +28,10 @@
               </a>
               <ul class="dropdown-menu">
                 <% if signed_in? %>
-		              <li><%= link_to "修改密码", edit_password_users_path %></li>
-		              <li><%= link_to "退出", sign_out_path %></li>
+                  <% if can? :check_city, :update%>
+  		              <li><%= link_to "修改密码", edit_password_users_path %></li>
+                  <%end%>
+  		              <li><%= link_to "退出", sign_out_path %></li>
 	              <% else %>
 	              	<li><%= link_to "登陆", sign_in_path %></li>
 	              <% end %>

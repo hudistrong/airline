@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  rolify
   include Clearance::User
 
   def self.authenticate(email, password)

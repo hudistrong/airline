@@ -6,8 +6,12 @@ class CitiesController < ApplicationController
 
   def get_cities
     cities = City.all.order(:maturity)
-    cities = cities.map do |c|
-      c.attributes.merge({is_open_zh: c.is_open_zh, maturity_zh: c.maturity_zh, time: c.created_at.strftime("%Y-%m-%d %H:%M")})
+    if can? :check_city, :city
+      cities = cities.map do |c|
+        c.attributes.merge({is_open_zh: c.is_open_zh, maturity_zh: c.maturity_zh, time: c.created_at.strftime("%Y-%m-%d %H:%M")})
+      end
+    else
+      cities = []
     end
     respond_to do |format|
       format.json{render :json => {:success => true, :data => cities}}
