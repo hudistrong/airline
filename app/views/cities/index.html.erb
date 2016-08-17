@@ -12,25 +12,24 @@
         success:function(data){
           if(data.success){
             var cities = data.data;
-            var p = document.getElementById("fuck");
             for (var i = 0; i < cities.length; i++) {
-              var new_tr = $("tr");
-              var id_td = $("td");        
-              var name_td = $("td");
-              var create_td = $("td");
-              var a_td = $("td");
-              var maturity_td = $("td");
-              id_td.innerText = cities[i].id;
-              name_td.innerText = cities[i].name;
-              create_td.innerText = cities[i].time;
-              a_td.innerHTML = ('<a href="/cities/update_is_open?city_id='+cities[i].id+'">'+cities[i].is_open_zh+'</a>');
-              maturity_td.innerText = cities[i].maturity_zh;
+              var new_tr = $("<tr></tr>");
+              var id_td = $("<td></td>");        
+              var name_td = $("<td></td>");
+              var create_td = $("<td></td>");
+              var a_td = $("<td></td>");
+              var maturity_td = $("<td></td>");
+              id_td = '<td>'+cities[i].id+'</td>';
+              name_td = '<td>'+cities[i].name+'</td>';
+              create_td  = '<td>'+cities[i].time+'</td>';
+              a_td ='<td><a href="/cities/update_is_open?city_id='+cities[i].id+'">'+cities[i].is_open_zh+'</a></td>';
+              maturity_td = '<td>'+cities[i].maturity_zh+'</td>';
               new_tr.append(id_td);
               new_tr.append(name_td);
               new_tr.append(create_td);
               new_tr.append(a_td);
               new_tr.append(maturity_td);
-              p.appendChild(new_tr);
+              $("#fuck").append(new_tr);
             }
           }
         },
@@ -40,8 +39,8 @@
     }
 </script>
 
+<button id="bt" onclick="getCities()">查看城市</button>
 <table id="fuck" class="table table-bordered table-hover" style="margin-top: 5%;text-align:center;">
-  	<button id="bt" onclick="getCities()">查看城市</button>
     <tr style="background-color:#f6f6f6;">
   	  <td>#</td>
   	  <td>城市名称</td>
