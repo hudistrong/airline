@@ -19,10 +19,9 @@
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
               <% if signed_in? %>
                 <% if current_user.username? %>
-                  <%= current_user.username %>
-                <%else%>
-                  <%= current_user.email %>
+                  <%= current_user.username %><span style="font-size: 14px;"><strong>,&nbsp;</strong></span>
                 <% end %>
+                <%= current_user.email %>
                 <%= image_tag current_user.avatar.url(:medium), :class => "image_class" %>    
               <% end %>
                 <span class="caret"></span>
@@ -31,7 +30,9 @@
                 <% if signed_in? %>
                   <% if can? :check_city, :update%>
   		              <li><%= link_to "修改密码", edit_password_users_path %></li>
-                    <li><%= link_to "上传头像", sign_out_path %></li>
+                    <% if can? :avatar, :update%>
+                      <li><%= link_to "修改头像", avatar_upload_users_path %></li>
+                    <%end%>
                   <%end%>
   		              <li><%= link_to "退出", sign_out_path %></li>
 	              <% else %>
@@ -61,6 +62,6 @@
 <style type="text/css">
   .image_class{
     position: absolute;
-    top:0px;
+    top:5px;
   }
 </style>

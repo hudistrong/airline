@@ -9,6 +9,10 @@ class Ability
     else user.has_role? :visitor
         can :check_city, :update
     end
+
+    if user.has_role? :visitor
+        can :avatar, :update
+    end
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)

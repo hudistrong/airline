@@ -6,22 +6,27 @@ class UsersController < ApplicationController
   def create
     @user = user_from_params
     user = User.where(email: @user.email).first
-    if @user.save
-      #裁减头像
-      @user.shave_avatar
-      flash[:success] = '注册成功!'
-      sign_in @user
-      redirect_to cities_path
+    if @user.username.blank?
+      flash[:danger] = "用户名不能为空"
+      render :new
     else
-      if user.present?
-        flash[:danger] = "该邮箱已被使用!"
-      elsif @user.password.blank? || @user.email.blank?
-        flash[:danger] = "邮箱或密码不能为空!"
+      if @user.save
+        #裁减头像
+        @user.shave_avatar
+        flash[:success] = '注册成功!'
+        sign_in @user
+        @user.add_role :visitor
+        redirect_to cities_path
       else
-        flash[:danger] = "注册失败!"
+        if user.present?
+          flash[:danger] = "该邮箱已被使用!"
+        elsif @user.password.blank? || @user.email.blank?
+          flash[:danger] = "邮箱或密码不能为空!"
+        else
+          flash[:danger] = "注册失败!"
+        end     
+        render template: "users/new"
       end
-      
-      render template: "users/new"
     end
   end
 
@@ -48,18 +53,30 @@ class UsersController < ApplicationController
   end
 
   def avatar_upload
-    @user = current_user
+  end
+
+  def upload_avatar
+    current_user.avatar = user_from_params.avatar
+    if current_user.save
+      current_user.shave_avatar
+      flash[:success] = "修改成功!"
+    else
+      flash[:danger] = "修改失败!"
+    end
+    redirect_to cities_path
   end
 
   private
 
 	  def user_from_params
+      username = user_params.delete(:username)
 	    email = user_params.delete(:email)
 	    password = user_params.delete(:password)
       avatar = user_params.delete(:avatar)
 
 	    Clearance.configuration.user_model.new(user_params).tap do |user|
-	      user.email = email
+	      user.username = username
+        user.email = email
 	      user.password = password
         user.avatar = avatar
 	    end

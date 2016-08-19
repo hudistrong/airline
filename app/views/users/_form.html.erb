@@ -1,4 +1,9 @@
 <div class="text-field" style="font-weight: bold;font-size:16px;margin-top:55px;">
+  <%= form.label :username,"用户名" %>
+  <%= form.text_field :username, :class => "form-control" %>
+</div>
+
+<div class="text-field" style="font-weight: bold;font-size:16px;margin-top:5px;">
   <%= form.label :email,"邮箱" %>
   <%= form.text_field :email, type: 'email', :class => "form-control" %>
 </div>

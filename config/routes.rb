@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     collection do
       get "edit_password"
       post "update_password"
+      get "avatar_upload"
+      post "upload_avatar"
     end
   end
   

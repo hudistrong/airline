@@ -1,0 +1,12 @@
+<div class="yield" style="width: 200px;">
+	<%= form_for current_user,url: {action: "upload_avatar"}, method: 'post' do |form| %>
+	  <div class="avatar-field" style="font-weight: bold;font-size:16px;margin-top:5px;">
+		  <%= form.label :avatar,"上传头像" %>
+		  <%= form.file_field :avatar, :class => "form-control" %>
+		</div>
+
+	  <div class="submit-field" style="margin-top: 10px;">
+	    <%= form.submit '上传', :class => 'btn btn-primary' %>
+	  </div>
+	<% end %>
+</div>
