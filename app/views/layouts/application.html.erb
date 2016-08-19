@@ -23,6 +23,7 @@
                 <%else%>
                   <%= current_user.email %>
                 <% end %>
+                <%= image_tag current_user.avatar.url(:medium), :class => "image_class" %>    
               <% end %>
                 <span class="caret"></span>
               </a>
@@ -30,6 +31,7 @@
                 <% if signed_in? %>
                   <% if can? :check_city, :update%>
   		              <li><%= link_to "修改密码", edit_password_users_path %></li>
+                    <li><%= link_to "上传头像", sign_out_path %></li>
                   <%end%>
   		              <li><%= link_to "退出", sign_out_path %></li>
 	              <% else %>
@@ -55,3 +57,10 @@
     $("#alert_flash").hide();
   }
 </script>
+
+<style type="text/css">
+  .image_class{
+    position: absolute;
+    top:0px;
+  }
+</style>

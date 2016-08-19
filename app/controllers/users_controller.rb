@@ -7,6 +7,8 @@ class UsersController < ApplicationController
     @user = user_from_params
     user = User.where(email: @user.email).first
     if @user.save
+      #裁减头像
+      @user.shave_avatar
       flash[:success] = '注册成功!'
       sign_in @user
       redirect_to cities_path
@@ -45,15 +47,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def avatar_upload
+    @user = current_user
+  end
+
   private
 
 	  def user_from_params
 	    email = user_params.delete(:email)
 	    password = user_params.delete(:password)
+      avatar = user_params.delete(:avatar)
 
 	    Clearance.configuration.user_model.new(user_params).tap do |user|
 	      user.email = email
 	      user.password = password
+        user.avatar = avatar
 	    end
 	  end
 
