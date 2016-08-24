@@ -1,5 +1,6 @@
 class City < ApplicationRecord
 	enum maturity: %i(newarea half mature)
+	acts_as_list :order => "position"
 
 	def maturity_zh
 		en_to_zh = {

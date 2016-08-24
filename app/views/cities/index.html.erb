@@ -1,4 +1,4 @@
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     $(function(){
       var bt = document.getElementById("bt");
     }) 
@@ -37,17 +37,28 @@
         }
       });
     }
-</script>
+</script> -->
 
-<button style="margin-top: 50px;" id="bt" onclick="getCities()" class="btn btn-default">查看城市</button>
+<!-- <button style="margin-top: 50px;" id="bt" onclick="getCities()" class="btn btn-default">查看城市</button> -->
 <table id="fuck" class="table table-bordered table-hover" style="margin-top: 5%;text-align:center;">
     <tr style="background-color:#f6f6f6;">
   	  <td>#</td>
   	  <td>城市名称</td>
   	  <td>创建时间</td>
   	  <td>是否开通</td>
+      <td>排序</td>
   	  <td>成熟度</td>
   	</tr>
+    <% @cities.each do |c| %>
+      <tr>
+        <td><%=c.position%></td>
+        <td><%=c.name%></td>
+        <td><%=c.created_at%></td>
+        <td><%= link_to "#{c.is_open_zh}", update_is_open_cities_path(city_id: c.id)%></td>
+        <td><%= link_to '上移', "/cities/#{c.id}/move_position/pre" %>&nbsp;<%= link_to '下移', "/cities/#{c.id}/move_position/next" %></td>
+        <td><%=c.maturity_zh%></td>
+      </tr>
+    <% end %>
 </table>
 
 

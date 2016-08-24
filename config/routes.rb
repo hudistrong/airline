@@ -30,7 +30,8 @@ Rails.application.routes.draw do
     collection do
       get "index"
       get "update_is_open"
-      get "get_cities"
     end
   end
+
+  get 'cities/:id/move_position/:type' => 'cities#move_position'
 end
