@@ -18,6 +18,4 @@ class City < ApplicationRecord
 		}
 		en_to_zh[self.try(:is_open).to_s]
 	end
-	def fuck
-	end
 end
