@@ -4,7 +4,15 @@ class CitiesController < ApplicationController
     # image = MiniMagick::Image.open("http://www.imagewa.com/PhotoPreview/367/367_56025.jpg")
     # image.flip
     # image.write("app/assets/images/main_2.jpg")
-    @cities = City.all.order("position asc")
+    if $redis.get(:cities).present?
+      @cities = JSON.parse($redis.get(:cities))
+      @cities = @cities.collect do |city|
+        City.new(city.deep_symbolize_keys)
+      end
+    else
+      @cities = City.all.order("position asc")
+      $redis.set(:cities, @cities.to_json)
+    end
     # @cities = cities.map do |c|
     #   c.attributes.merge({is_open_zh: c.is_open_zh, maturity_zh: c.maturity_zh, time: c.created_at.strftime("%Y-%m-%d %H:%M")})
     # end
@@ -12,7 +20,6 @@ class CitiesController < ApplicationController
     #   format.html
     #   format.json{render :json => {:success => true, :data => @cities}}
     # end
-  	
   end
 
   def get_cities
