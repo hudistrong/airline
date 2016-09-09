@@ -1,0 +1,19 @@
+development:
+  host: '127.0.0.1'
+  port: 6379
+  password: ''
+
+staging:
+  host: '127.0.0.1'
+  port: 6379
+  password: ''
+
+test:
+  host: '127.0.0.1'
+  port: 6379
+  password: ''
+
+production:
+  host: 01afeb587c3146dd.m.cnbja.kvstore.aliyuncs.com
+  port: 6379
+  password: '01afeb587c3146dd:TongXin2015'

@@ -34,14 +34,19 @@ gem 'clearance'
 gem 'cancancan', '~> 1.10'
 
 gem 'rolify'
-
-gem 'redis', '~>3.2'
+# Redis
+gem 'hiredis'
+gem 'redis-namespace'
+gem 'redis-objects'
+gem 'gearman-ruby'
 
 gem 'mini_magick'
 
 gem "paperclip", "~> 5.0.0"
 
 gem 'acts_as_list'
+
+gem 'sidekiq'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
