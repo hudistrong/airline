@@ -1,6 +1,7 @@
 class CitiesController < ApplicationController
   before_action :require_login
   def index
+    puts self
     # image = MiniMagick::Image.open("http://www.imagewa.com/PhotoPreview/367/367_56025.jpg")
     # image.flip
     # image.write("app/assets/images/main_2.jpg")
