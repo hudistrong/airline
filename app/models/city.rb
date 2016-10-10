@@ -1,4 +1,7 @@
 class City < ApplicationRecord
+	has_many :airports
+	has_many :city_air_companies
+	has_many :air_companies, :through => :city_air_companies
 	enum maturity: %i(newarea half mature)
 	acts_as_list :order => "position"
 

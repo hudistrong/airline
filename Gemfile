@@ -46,6 +46,10 @@ gem "paperclip", "~> 5.0.0"
 
 gem 'acts_as_list'
 
+gem 'ekuseru'
+
+gem 'responders'
+
 gem 'sidekiq'
 # gem 'sinatra', require: false
 

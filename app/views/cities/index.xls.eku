@@ -1,0 +1,17 @@
+Spreadsheet.client_encoding = "UTF-8"
+
+__filename = "城市列表.xls"
+worksheet = xls.create_worksheet
+%w(城市id 城市名 创建时间).each_with_index do |col,i|
+  add_format worksheet, 0, i, col
+end
+
+# # Title Start
+@cities.each_with_index do | vr, j |
+  j += 1
+  start_col = 0
+  add_format worksheet, j, start_col, vr.id
+  add_format worksheet, j, start_col+1, vr.try(:name)
+  add_format worksheet, j, start_col+2, vr.try(:created_at)
+end
+# Title End

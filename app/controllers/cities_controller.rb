@@ -1,5 +1,6 @@
 class CitiesController < ApplicationController
   before_action :require_login
+  respond_to :html, :xls
   def index
     # image = MiniMagick::Image.open("http://www.imagewa.com/PhotoPreview/367/367_56025.jpg")
     # image.flip

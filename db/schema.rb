@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160824025502) do
+ActiveRecord::Schema.define(version: 20161009065509) do
+
+  create_table "air_companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.boolean  "state"
+    t.string   "air_code"
+    t.integer  "country_id"
+    t.integer  "level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "airports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.integer  "level"
+    t.text     "comment",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "city_id"
+  end
 
   create_table "cities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -19,6 +38,15 @@ ActiveRecord::Schema.define(version: 20160824025502) do
     t.datetime "updated_at", null: false
     t.integer  "maturity"
     t.integer  "position"
+  end
+
+  create_table "city_air_companies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "city_id"
+    t.integer  "air_company_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["air_company_id"], name: "index_city_air_companies_on_air_company_id", using: :btree
+    t.index ["city_id"], name: "index_city_air_companies_on_city_id", using: :btree
   end
 
   create_table "permissions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
