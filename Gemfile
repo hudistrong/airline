@@ -51,6 +51,10 @@ gem 'ekuseru'
 gem 'responders'
 
 gem 'sidekiq'
+
+gem 'ruby-pinyin'
+
+gem 'roo', '~> 2.4.0'
 # gem 'sinatra', require: false
 
 group :development, :test do
