@@ -56,6 +56,17 @@ gem 'ruby-pinyin'
 
 gem 'roo', '~> 2.4.0'
 # gem 'sinatra', require: false
+gem 'carrierwave', '>= 1.0.0.rc', '< 2.0'
+
+gem 'roo-xls'
+
+gem 'rucaptcha'
+
+gem 'faye-websocket'
+
+gem 'thin'
+
+gem 'hellow'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

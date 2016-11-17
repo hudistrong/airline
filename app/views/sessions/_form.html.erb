@@ -10,6 +10,12 @@
       <%= form.password_field :password, :class => "form-control" %>
     </div>
 
+    <div class="rucaptcha-field" style="font-weight: bold;font-size:16px;margin-top:5px;">
+      <%= form.label '验证码' %>
+      <%= rucaptcha_input_tag(class: 'form-control rucaptcha_input', placeholder: '请输入验证码') %>
+      <%= rucaptcha_image_tag(alt: 'Captcha',class: 'rucaptcha_image') %>
+    </div>
+
     <div class="submit-field" style="margin-top: 10px;">
       <%= form.submit '登陆', :class => 'btn btn-primary'%>
     </div>
@@ -34,6 +40,9 @@
     padding-right: 20px;
     border-radius: 10px;
     background-color: rgb(60,200,180);
+  }
+  .rucaptcha_image{
+    margin-top: 5px;
   }
 
 </style>

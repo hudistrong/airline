@@ -17,3 +17,9 @@
   <%= form.label :avatar,"上传头像" %>
   <%= form.file_field :avatar, :class => "form-control" %>
 </div>
+
+<div class="rucaptcha-field" style="font-weight: bold;font-size:16px;margin-top:5px;">
+  <%= form.label '验证码' %>
+  <%= rucaptcha_input_tag(class: 'form-control rucaptcha_input', placeholder: '请输入验证码') %>
+  <%= rucaptcha_image_tag(alt: 'Captcha',class: 'rucaptcha_image') %>
+</div>

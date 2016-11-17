@@ -60,6 +60,7 @@
       </tr>
     <% end %>
     <%= link_to "导出", cities_path(:format => :xls)%>
+    <%= link_to "批量添加城市", upload_xls_cities_path, :style => {'margin-left': '30px'}%>
 </table>
 
 

@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   rolify
   include Clearance::User
+  attr_accessor :xls_file
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/default_avatar.jpg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
   after_create_commit { ResetJob.perform_later }

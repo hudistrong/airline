@@ -9,6 +9,9 @@ class UsersController < ApplicationController
     if @user.username.blank?
       flash[:danger] = "用户名不能为空"
       render :new
+    elsif !verify_rucaptcha?(@user)
+      redirect_to sign_up_path
+      flash[:danger] = '验证码错误!'
     else
       if @user.save
         #裁减头像

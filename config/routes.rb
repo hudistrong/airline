@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get "/sign_in" => "sessions#new", as: "sign_in"
   get "/sign_out" => "sessions#destroy", as: "sign_out"
   mount AirlineApi => '/api'
+  mount RuCaptcha::Engine => "/rucaptcha"
 
   # resources :users, controller: "users", only: [:create]
   # get "/edit_password" => "users#edit_password", as: "edit_password"
@@ -33,6 +34,8 @@ Rails.application.routes.draw do
     collection do
       get "index"
       get "update_is_open"
+      get "upload_xls"
+      post "save_cities"
     end
   end
 
